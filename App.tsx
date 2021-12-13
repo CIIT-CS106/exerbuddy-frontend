@@ -1,31 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { NativeBaseProvider, Box, Center } from 'native-base';
-export const Example = () => {
-  return (
-    <>
-      <Box
-        bg="primary.500"
-        _text={{
-          fontSize: "md",
-          fontWeight: "medium",
-          color: "warmGray.50",
-          letterSpacing: "lg",
-        }}
-      >
-        This is a Box
-      </Box>
-    </>
-  )
-}
+// import { StyleSheet, Text, View } from 'react-native';
+import { NativeBaseProvider, Box, Center, Text } from 'native-base';
 
-export default () => {
+export default function App() {
+  // 2. Use at the root of your app
   return (
     <NativeBaseProvider>
-      <Center flex={1} px="3">
-        <Example />
-      </Center>
+      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
+        <Text>Open up App.js to start working on your app!</Text>
+      </Box>
     </NativeBaseProvider>
-  )
+  );
 }
