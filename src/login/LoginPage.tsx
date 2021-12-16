@@ -36,38 +36,38 @@ export function LoginPage({ navigation, ...restProps }: Props) {
           <FormControl paddingX="8">
             <VStack>
               <Stack mb="5">
-                <FormControl.Label _text={{ color: "#42ACA3", bold: true }}>
+                <FormControl.Label _text={{ color: "primary", bold: true }}>
                   Email Address
                 </FormControl.Label>
                 <Input
                   variant="underlined"
                   fontSize="16"
-                  borderColor="#42ACA3"
+                  borderColor="primary"
                   color="white"
                   borderBottomWidth="2"
                   placeholder="first.last@mail.com"
-                  selectionColor="#42ACA3"
+                  selectionColor="primary"
                   keyboardType="email-address"
                 />
               </Stack>
               <Stack mb="5">
-                <FormControl.Label _text={{ color: "#42ACA3", bold: true }}>
+                <FormControl.Label _text={{ color: "primary", bold: true }}>
                   Password
                 </FormControl.Label>
                 <Input
                   variant="underlined"
                   fontSize="16"
-                  borderColor="#42ACA3"
+                  borderColor="primary"
                   color="white"
                   borderBottomWidth="2"
                   placeholder="Password"
-                  selectionColor="#42ACA3"
+                  selectionColor="primary"
                   type="password"
                 />
               </Stack>
               <Stack>
                 <Button
-                  bg="#42ACA3"
+                  bg="primary"
                   borderRadius="20"
                   width="90%"
                   alignSelf="center"
@@ -84,7 +84,7 @@ export function LoginPage({ navigation, ...restProps }: Props) {
                 <Link
                   onPress={() => navigation.navigate("sign-up")}
                   textDecoration={"none"}
-                  _text={{ color: "#42ACA3", bold: true }}
+                  _text={{ color: "primary", bold: true }}
                 >
                   SIGN UP HERE
                 </Link>
