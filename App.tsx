@@ -1,15 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
-import { NativeBaseProvider, Box, Center, Text } from 'native-base';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NativeBaseProvider, Text, Box, StorageManager, ColorMode} from 'native-base';
 
-export default function App() {
-  // 2. Use at the root of your app
+import {LoginPage} from './src/login/LoginPage';
+import {SignUpPage} from './src/signup/SignUpPage';
+
+export type StackParamsList  = {
+  login: undefined;
+  "sign-up":undefined;
+}
+
+const Stack = createNativeStackNavigator<StackParamsList>();
+
+function App() {
   return (
-    <NativeBaseProvider>
-      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-        <Text>Open up App.js to start working on your app!</Text>
-      </Box>
+    <NativeBaseProvider >
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="login">
+          <Stack.Screen options={{headerShown: false}} name="login" component={LoginPage} />
+          <Stack.Screen name="sign-up" component={SignUpPage} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }
+export default App;
