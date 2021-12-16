@@ -1,70 +1,78 @@
-import { Box, Center, Text, Image, Input, Stack, FormControl, Button, Link, HStack,VStack} from 'native-base';
-import { color } from 'native-base/lib/typescript/theme/styled-system';
+import {
+  Box,
+  Center,
+  Text,
+  Image,
+  Input,
+  Stack,
+  FormControl,
+  Button,
+  Link,
+  HStack,
+  VStack,
+} from "native-base";
+import { color } from "native-base/lib/typescript/theme/styled-system";
 
-import { StackParamsList   } from "../../App";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import React from "react";
+import { StackParamsList } from "@app/App";
 
-import{ NativeStackScreenProps, } from "@react-navigation/native-stack";
-import React from 'react';
+interface Props extends NativeStackScreenProps<StackParamsList, "login"> {}
 
-
-interface Props extends NativeStackScreenProps<StackParamsList, 'login'> {}
-
-export function LoginPage({navigation, ...restProps}:Props) {
-
+export function LoginPage({ navigation, ...restProps }: Props) {
   return (
-    <Box
-      bg="#242426"
-      height="100%"
-      width="100%"
-    >
+    <Box bg="#242426" height="100%" width="100%">
       <Box alignItems="center">
         <Box width="70%" height="50%">
-          <Image 
-          source={require('../image/logoWName.png')}
-          w="100%"
-          h="100%"
-          resizeMode={"contain"}
-          alt="Alternate Text"
-          />    
+          <Image
+            source={require("../image/logoWName.png")}
+            w="100%"
+            h="100%"
+            resizeMode={"contain"}
+            alt="Alternate Text"
+          />
         </Box>
         <Box width="100%">
           <FormControl paddingX="8">
             <VStack>
               <Stack mb="5">
-                <FormControl.Label _text={{color:"#42ACA3", bold:true,}}>Email Address</FormControl.Label>
-                <Input 
-                variant="underlined" 
-                fontSize="16"
-                borderColor="#42ACA3" 
-                color="white" 
-                borderBottomWidth="2" 
-                placeholder="first.last@mail.com" 
-                selectionColor="#42ACA3"
-                keyboardType='email-address'
-                
+                <FormControl.Label _text={{ color: "#42ACA3", bold: true }}>
+                  Email Address
+                </FormControl.Label>
+                <Input
+                  variant="underlined"
+                  fontSize="16"
+                  borderColor="#42ACA3"
+                  color="white"
+                  borderBottomWidth="2"
+                  placeholder="first.last@mail.com"
+                  selectionColor="#42ACA3"
+                  keyboardType="email-address"
                 />
               </Stack>
               <Stack mb="5">
-                <FormControl.Label  _text={{color:"#42ACA3", bold:true,}}>Password</FormControl.Label>
-                <Input 
-                variant="underlined"
-                fontSize="16"
-                borderColor="#42ACA3" 
-                color="white" 
-                borderBottomWidth="2"
-                placeholder="Password"
-                selectionColor="#42ACA3"
-                type='password'
+                <FormControl.Label _text={{ color: "#42ACA3", bold: true }}>
+                  Password
+                </FormControl.Label>
+                <Input
+                  variant="underlined"
+                  fontSize="16"
+                  borderColor="#42ACA3"
+                  color="white"
+                  borderBottomWidth="2"
+                  placeholder="Password"
+                  selectionColor="#42ACA3"
+                  type="password"
                 />
               </Stack>
               <Stack>
-                <Button  
-                  bg="#42ACA3" 
-                  borderRadius="20" 
-                  width="90%" 
-                  alignSelf="center" 
-                  mb="5" 
-                  _text={{color:"#ffffff", bold:true}}
+                <Button
+                  bg="#42ACA3"
+                  borderRadius="20"
+                  width="90%"
+                  alignSelf="center"
+                  mb="5"
+                  _text={{ color: "#ffffff", bold: true }}
                 >
                   LOG IN
                 </Button>
@@ -73,19 +81,18 @@ export function LoginPage({navigation, ...restProps}:Props) {
                 <Text color="#ffffff" mr="1">
                   Don't have an account?
                 </Text>
-                <Link 
-                  onPress={() => navigation.navigate('sign-up')} 
-                  textDecoration={"none"} 
-                  _text={{color:"#42ACA3", bold:true,}}
+                <Link
+                  onPress={() => navigation.navigate("sign-up")}
+                  textDecoration={"none"}
+                  _text={{ color: "#42ACA3", bold: true }}
                 >
-                    SIGN UP HERE
+                  SIGN UP HERE
                 </Link>
               </HStack>
             </VStack>
           </FormControl>
-        </Box>    
+        </Box>
       </Box>
     </Box>
   );
 }
-
