@@ -28,7 +28,11 @@ function App() {
               name="login"
               component={LoginPage}
             />
-            <Stack.Screen name="sign-up" component={SignUpPage} />
+            <Stack.Screen 
+            name="sign-up" 
+            component={SignUpPage} 
+            options={{ title: 'Sign Up' }} 
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
