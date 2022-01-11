@@ -7,12 +7,14 @@ import { Provider as ReduxProvider } from "react-redux";
 
 import { LoginPage } from "../login/LoginPage";
 import { SignUpPage } from "../signup/SignUpPage";
+import { SignUpGender } from "../signup-gender/SignUpGender";
 import { store } from "./store";
 import theme from "../theme";
 
 export type StackParamsList = {
   login: undefined;
   "sign-up": undefined;
+  "signup-gender": undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamsList>();
@@ -31,8 +33,32 @@ function App() {
             <Stack.Screen 
             name="sign-up" 
             component={SignUpPage} 
-            options={{ title: 'Sign Up' }} 
+            options={{ title: 'Sign Up',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#40a69d',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }} 
             />
+
+          <Stack.Screen 
+            name="signup-gender" 
+            component={SignUpGender} 
+            options={{ title: 'Sign Up',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#40a69d',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }} 
+          />
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
