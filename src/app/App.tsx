@@ -8,6 +8,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { LoginPage } from "../login/LoginPage";
 import { SignUpPage } from "../signup/SignUpPage";
 import { store } from "./store";
+import theme from "../theme";
 
 export type StackParamsList = {
   login: undefined;
@@ -19,7 +20,7 @@ const Stack = createNativeStackNavigator<StackParamsList>();
 function App() {
   return (
     <ReduxProvider store={store}>
-      <NativeBaseProvider>
+      <NativeBaseProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="login">
             <Stack.Screen
@@ -27,7 +28,11 @@ function App() {
               name="login"
               component={LoginPage}
             />
-            <Stack.Screen name="sign-up" component={SignUpPage} />
+            <Stack.Screen 
+            name="sign-up" 
+            component={SignUpPage} 
+            options={{ title: 'Sign Up' }} 
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
