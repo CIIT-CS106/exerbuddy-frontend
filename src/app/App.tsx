@@ -11,6 +11,7 @@ import { LoginPage } from "../login/LoginPage";
 import { SignUpPage } from "../signup/SignUpPage";
 import { SignUpGender } from "../signup-gender/SignUpGender";
 import { HomePage } from "../home/HomePage";
+import { Workout} from "../workout/Workout";
 import { WorkoutDifficulty} from "../workout/WorkoutDifficulty";
 import { store } from "./store";
 import theme from "../theme";
@@ -20,6 +21,7 @@ export type StackParamsList = {
   "sign-up": undefined;
   "signup-gender": undefined;
   "home" :undefined;
+  "workout" :undefined;
   "workoutdifficulty" :undefined;
 };
 
@@ -31,7 +33,7 @@ function App() {
     <ReduxProvider store={store}>
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="sign-up">
+          <Stack.Navigator initialRouteName="login">
             <Stack.Screen
               options={{ headerShown: false }}
               name="login"
@@ -75,6 +77,20 @@ function App() {
               }}
               name="home"
               component={HomePage}
+          />
+
+        <Stack.Screen
+          name="workout"
+          component={Workout}
+          options={{ title: 'WORKOUT',
+            headerStyle:{
+              backgroundColor: '#252527',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
           />
 
           <Stack.Screen
