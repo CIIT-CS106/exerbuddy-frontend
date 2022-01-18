@@ -62,7 +62,6 @@ export function LoginForm({ navigation, ...restProps }: Props){
                   keyboardType="email-address"
                   placeholder="Password"
                   type="password"
-                  
                 />
               </Stack>
               <Stack>

@@ -1,4 +1,6 @@
+import 'react-native-gesture-handler';
 import React from "react";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NativeBaseProvider } from "native-base";
@@ -8,6 +10,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { LoginPage } from "../login/LoginPage";
 import { SignUpPage } from "../signup/SignUpPage";
 import { SignUpGender } from "../signup-gender/SignUpGender";
+import { HomePage } from "../home/HomePage";
 import { store } from "./store";
 import theme from "../theme";
 
@@ -15,9 +18,11 @@ export type StackParamsList = {
   login: undefined;
   "sign-up": undefined;
   "signup-gender": undefined;
+  "home" :undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamsList>();
+
 
 function App() {
   return (
@@ -31,33 +36,43 @@ function App() {
               component={LoginPage}
             />
             <Stack.Screen 
-            name="sign-up" 
-            component={SignUpPage} 
-            options={{ title: 'Sign Up',
-            headerTitleAlign: 'center',
-            headerStyle: {
-              backgroundColor: '#40a69d',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }} 
+              name="sign-up" 
+              component={SignUpPage} 
+              options={{ title: 'Sign Up',
+              headerTitleAlign: 'center',
+              headerStyle: {
+                backgroundColor: '#40a69d',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              }} 
             />
 
           <Stack.Screen 
             name="signup-gender" 
             component={SignUpGender} 
             options={{ title: 'Sign Up',
-            headerTitleAlign: 'center',
-            headerStyle: {
-              backgroundColor: '#40a69d',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }} 
+              headerTitleAlign: 'center',
+              headerStyle: {
+                backgroundColor: '#40a69d',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }} 
+          />
+          <Stack.Screen
+              options={{title: 'Home',
+                headerStyle: {
+                  backgroundColor: '#252527',
+                },
+                headerTintColor: '#fff',
+              }}
+              name="home"
+              component={HomePage}
           />
           </Stack.Navigator>
         </NavigationContainer>
