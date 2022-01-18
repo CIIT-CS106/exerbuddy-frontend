@@ -8,6 +8,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { LoginPage } from "../login/LoginPage";
 import { SignUpPage } from "../signup/SignUpPage";
 import { SignUpGender } from "../signup-gender/SignUpGender";
+import { WorkoutDifficulty } from "../workout/WorkoutDifficulty";
 import { store } from "./store";
 import theme from "../theme";
 
@@ -15,6 +16,7 @@ export type StackParamsList = {
   login: undefined;
   "sign-up": undefined;
   "signup-gender": undefined;
+  "workout": undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamsList>();
@@ -24,7 +26,7 @@ function App() {
     <ReduxProvider store={store}>
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="login">
+          <Stack.Navigator initialRouteName="workout">
             <Stack.Screen
               options={{ headerShown: false }}
               name="login"
@@ -59,6 +61,21 @@ function App() {
             },
           }} 
           />
+
+        <Stack.Screen
+          name="workout"
+          component={WorkoutDifficulty}
+          options={{ title: 'WORKOUT',
+            headerStyle:{
+              backgroundColor: '#252527',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+        }}
+        />
+
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
