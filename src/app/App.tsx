@@ -13,6 +13,8 @@ import { SignUpGender } from "../signup-gender/SignUpGender";
 import { HomePage } from "../home/HomePage";
 import { Workout} from "../workout/Workout";
 import { WorkoutDifficulty} from "../workout/WorkoutDifficulty";
+import { ExerciseMenu} from "../workout/ExerciseMenu";
+import { ExerciseTimer} from "../workout/ExerciseTimer";
 import { store } from "./store";
 import theme from "../theme";
 
@@ -23,6 +25,8 @@ export type StackParamsList = {
   "home" :undefined;
   "workout" :undefined;
   "workoutdifficulty" :undefined;
+  "exercise-menu" :undefined;
+  "exercise-timer" :undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamsList>();
@@ -78,34 +82,52 @@ function App() {
               name="home"
               component={HomePage}
           />
-
-        <Stack.Screen
-          name="workout"
-          component={Workout}
-          options={{ title: 'WORKOUT',
-            headerStyle:{
-              backgroundColor: '#252527',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}
+          <Stack.Screen
+            name="workout"
+            component={Workout}
+            options={{ title: 'WORKOUT',
+              headerStyle:{
+                backgroundColor: '#252527',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
           />
-
           <Stack.Screen
           name="workoutdifficulty"
-          component={WorkoutDifficulty}
-          options={{ title: 'WORKOUT',
-            headerStyle:{
-              backgroundColor: '#252527',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-        }}
-        />
+            component={WorkoutDifficulty}
+            options={{ title: 'WORKOUT',
+              headerStyle:{
+                backgroundColor: '#252527',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
+          />
+          <Stack.Screen
+              options={{title: 'WORKOUT',
+                headerStyle: {
+                  backgroundColor: '#252527',
+                },
+                headerTintColor: '#fff',
+              }}
+              name="exercise-menu"
+              component={ExerciseMenu}
+          />
+          <Stack.Screen
+              options={{title: 'WORKOUT',
+                headerStyle: {
+                  backgroundColor: '#252527',
+                },
+                headerTintColor: '#fff',
+              }}
+              name="exercise-timer"
+              component={ExerciseTimer}
+          />
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
