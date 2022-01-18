@@ -11,7 +11,7 @@ import { LoginPage } from "../login/LoginPage";
 import { SignUpPage } from "../signup/SignUpPage";
 import { SignUpGender } from "../signup-gender/SignUpGender";
 import { HomePage } from "../home/HomePage";
-import { WorkoutDifficulty} from "../workout-difficulty/WorkoutDifficulty";
+import { WorkoutDifficulty} from "../workout/WorkoutDifficulty";
 import { store } from "./store";
 import theme from "../theme";
 
