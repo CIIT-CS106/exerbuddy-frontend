@@ -49,9 +49,7 @@ export function SignUpForm({ navigation, ...restProps }: Props){
                   variant="underlined"
                   borderBottomWidth="2"
                   keyboardType="email-address"
-                  placeholder="Last"
-                  type="password"
-                  
+                  placeholder="Last"        
                 />
               </Stack>
 
