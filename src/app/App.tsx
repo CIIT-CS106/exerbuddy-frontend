@@ -37,7 +37,7 @@ function App() {
     <ReduxProvider store={store}>
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="exercise-timer">
+          <Stack.Navigator initialRouteName="login">
             <Stack.Screen
               options={{ headerShown: false }}
               name="login"
