@@ -37,7 +37,7 @@ function App() {
     <ReduxProvider store={store}>
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="workout">
+          <Stack.Navigator initialRouteName="login">
             <Stack.Screen
               options={{ headerShown: false }}
               name="login"
@@ -112,6 +112,7 @@ function App() {
               options={{title: 'WORKOUT',
                 headerStyle: {
                   backgroundColor: '#252527',
+                  
                 },
                 headerTintColor: '#fff',
               }}
@@ -119,7 +120,7 @@ function App() {
               component={ExerciseMenu}
           />
           <Stack.Screen
-              options={{title: 'WORKOUT',
+              options={{title: '2-MIN PLANK',
                 headerStyle: {
                   backgroundColor: '#252527',
                 },
