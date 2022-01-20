@@ -37,7 +37,7 @@ function App() {
     <ReduxProvider store={store}>
       <NativeBaseProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="login">
+          <Stack.Navigator initialRouteName="workout">
             <Stack.Screen
               options={{ headerShown: false }}
               name="login"
