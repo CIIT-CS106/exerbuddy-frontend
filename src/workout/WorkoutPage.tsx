@@ -117,7 +117,7 @@ export function WorkoutForm() {
   );
 }
 
-export function Workout() {
+export function WorkoutPage() {
   return (
     <Box bg="secondary.800" height="100%" width="100%" safeArea>
       <StatusBar
