@@ -1,14 +1,9 @@
-import {
-  Box,
-  StatusBar,
-  Text,
-  Pressable,
-  HStack,
-} from "native-base";
+import { Box, StatusBar, Text, Pressable, HStack } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import App, { StackParamsList } from "@app/App";
 import { ScrollView } from "react-native-gesture-handler";
+import { HomeExerciseCard } from "./components/HomeExerciseCard";
 
 interface Props extends NativeStackScreenProps<StackParamsList, "home"> {}
 
@@ -37,97 +32,35 @@ export function QuickExercises() {
   );
 }
 
-export function QuickCardJandJ(){
-  return(
-    <Pressable mb="4">
-        {({isPressed }) => {
-          return (
-            <Box
-              bg={isPressed ? "primary.600" : "primary.500"}
-              p="5"
-              rounded="2xl"
-              style={{ transform: [{ scale: isPressed ? 0.96 : 1 }] }}
-            >
-              <HStack space="3">
-                <Box backgroundColor="secondary.800" p="10" rounded="xl"/>
-                <Text color="secondary.50" bold fontSize="lg" >
-                  1-min Jump and Jacks
-                </Text>
-              </HStack>
-            </Box>
-          );
-        }}
-      </Pressable>
-  )
-}
-
-export function QuickCardPushUps(){
-  return(
-    <Pressable mb="4">
-        {({isPressed }) => {
-          return (
-            <Box
-              bg={isPressed ? "primary.600" : "primary.500"}
-              p="5"
-              rounded="2xl"
-              style={{ transform: [{ scale: isPressed ? 0.96 : 1 }] }}
-            >
-              <HStack space="3">
-                <Box backgroundColor="secondary.800" p="10" rounded="xl"/>
-                <Text color="secondary.50" bold fontSize="lg" >
-                  10 Reps of Push-Ups
-                </Text>
-              </HStack>
-            </Box>
-          );
-        }}
-      </Pressable>
-  )
-}
-
-export function QuickCardSitUps(){
-  return(
-    <Pressable mb="4">
-        {({isPressed }) => {
-          return (
-            <Box
-              bg={isPressed ? "primary.600" : "primary.500"}
-              p="5"
-              rounded="2xl"
-              style={{ transform: [{ scale: isPressed ? 0.96 : 1 }] }}
-            >
-              <HStack space="3">
-                <Box backgroundColor="secondary.800" p="10" rounded="xl"/>
-                <Text color="secondary.50" bold fontSize="lg" >
-                  20 Reps of Sit-Ups
-                </Text>
-              </HStack>
-            </Box>
-          );
-        }}
-      </Pressable>
-  )
-}
-
 export function HomePage() {
+  const exerciseList = [
+    "1-min Jump and Jacks",
+    "10 Reps of Push-Ups",
+    "20 Reps of Sit-Ups",
+  ];
+
+  const renderExerciseCards = () => {
+    return exerciseList.map((exercise, i) => (
+      <HomeExerciseCard title={exercise} key={i} />
+    ));
+  };
+
   return (
     <Box>
       <ScrollView>
-      <StatusBar
-        animated={true}
-        translucent={true}
-        barStyle={"light-content"}
-        backgroundColor={"#252527"}
-      />
-      <Box mx="5">
-        <CaloriesGraph />
-      </Box>
-      <Box mx="5">
-        <QuickExercises />
-        <QuickCardJandJ/>
-        <QuickCardPushUps/>
-        <QuickCardSitUps/>
-      </Box>
+        <StatusBar
+          animated={true}
+          translucent={true}
+          barStyle={"light-content"}
+          backgroundColor={"#252527"}
+        />
+        <Box mx="5">
+          <CaloriesGraph />
+        </Box>
+        <Box mx="5">
+          <QuickExercises />
+          {renderExerciseCards()}
+        </Box>
       </ScrollView>
     </Box>
   );
