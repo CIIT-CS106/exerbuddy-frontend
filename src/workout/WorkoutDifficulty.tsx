@@ -13,14 +13,14 @@ import {
   import { color } from "native-base/lib/typescript/theme/styled-system";
   import React from "react";
   import { NativeStackScreenProps } from "@react-navigation/native-stack";
-  import { StackParamsList } from "@app/App";
+  import { WorkoutStackParamsList } from "@app/App";
   import {
     BaseRouter,
     NavigationHelpersContext,
     TabRouter,
   } from "@react-navigation/native";
   
-  interface Props extends NativeStackScreenProps<StackParamsList, "workoutdifficulty"> {}
+  interface Props extends NativeStackScreenProps<WorkoutStackParamsList, "workout-difficulty"> {}
   
   export function WorkoutDifficultyForm() {
     return (

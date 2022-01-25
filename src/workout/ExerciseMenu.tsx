@@ -6,11 +6,11 @@ import {
 } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import App, { StackParamsList } from "@app/App";
+import App, { WorkoutStackParamsList } from "@app/App";
 
 
 interface Props
-  extends NativeStackScreenProps<StackParamsList, "exercise-menu"> {}
+  extends NativeStackScreenProps<WorkoutStackParamsList, "exercise-menu"> {}
 
 export function ExerciseTitle() {
   return (

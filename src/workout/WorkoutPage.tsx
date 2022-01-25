@@ -14,7 +14,7 @@ import {
 import { color } from "native-base/lib/typescript/theme/styled-system";
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { HomeTabParamsList, StackParamsList } from "@app/App";
+import { HomeTabParamsList, StackParamsList,WorkoutStackParamsList } from "@app/App";
 import {
   BaseRouter,
   NavigationHelpersContext,
@@ -24,13 +24,13 @@ import {
 import WorkoutCategoryCard from "./components/WorkoutCategoryCard";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
-interface Props extends NativeStackScreenProps<HomeTabParamsList, "workout"> {}
+interface Props extends NativeStackScreenProps<WorkoutStackParamsList, "workouts"> {}
 
-export type WorkoutStackParamsList = {
-  workoutDifficulty: undefined;
-  workoutTimer: undefined;
-  workoutExercise: undefined;
-};
+// export type WorkoutStackParamsList = {
+//   workoutDifficulty: undefined;
+//   workoutTimer: undefined;
+//   workoutExercise: undefined;
+// };
 
 export function WorkoutForm() {
   return (

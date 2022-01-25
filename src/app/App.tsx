@@ -33,6 +33,12 @@ export type HomeTabParamsList = {
   landing: undefined;
   workout: undefined;
 };
+export type WorkoutStackParamsList = {
+  workouts: undefined;
+  "workout-difficulty": undefined;
+  "exercise-menu": undefined;
+  "exercise-timer": undefined;
+};
 
 const Tabs = createBottomTabNavigator<HomeTabParamsList>();
 
@@ -58,12 +64,64 @@ const HomeTabs = () => {
       />
       <Tabs.Screen
         name="workout"
-        component={WorkoutPage}
+        component={WorkoutStack}
         options={{
-          title: "Workouts",
+          headerShown: false,
         }}
       />
     </Tabs.Navigator>
+  );
+};
+
+const Stack = createNativeStackNavigator<WorkoutStackParamsList>();
+const WorkoutStack = () => {
+  const { colors } = theme;
+  return (
+    <Stack.Navigator initialRouteName={"workouts"}>
+      <Stack.Screen name="workouts" 
+      component={WorkoutPage} 
+      options={{
+        title: "WORKOUT",
+        headerStyle: {
+          backgroundColor: colors.secondary["800"],
+        },
+        headerTintColor: colors.secondary["50"],
+      }}
+      />
+      <Stack.Screen
+        name="workout-difficulty"
+        component={WorkoutDifficulty}
+        options={{
+          title: "WORKOUT",
+          headerStyle: {
+            backgroundColor: colors.secondary["800"],
+          },
+          headerTintColor: colors.secondary["50"],
+        }}
+      />
+      <Stack.Screen
+        name="exercise-menu"
+        component={ExerciseMenu}
+        options={{
+          title: "WORKOUT",
+          headerStyle: {
+            backgroundColor: colors.secondary["800"],
+          },
+          headerTintColor: colors.secondary["50"],
+        }}
+      />
+      <Stack.Screen
+        name="exercise-timer"
+        component={ExerciseTimer}
+        options={{
+          title: "WORKOUT",
+          headerStyle: {
+            backgroundColor: colors.secondary["800"],
+          },
+          headerTintColor: colors.secondary["50"],
+        }}
+      />
+    </Stack.Navigator>
   );
 };
 
