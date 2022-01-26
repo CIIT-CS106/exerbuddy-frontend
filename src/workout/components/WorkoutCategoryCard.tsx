@@ -1,5 +1,15 @@
 import React from "react";
+import { WorkoutStackParamsList } from "@app/App";
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Box, Center, Image, Pressable, Text } from "native-base";
+type WorkoutPageNavigationProp = NativeStackNavigationProp<
+  WorkoutStackParamsList,
+  "workouts"
+>;
 interface IProps {
   title: string;
   imageUrl?: string;
@@ -7,10 +17,14 @@ interface IProps {
 }
 
 const WorkoutCategoryCard = (props: IProps) => {
+  const navigation = useNavigation<WorkoutPageNavigationProp>();
+  const onCardPressed = () => {
+    navigation.navigate("workout-difficulty");
+  };
   const { title, imageUrl, onPressed } = props;
 
   return (
-    <Pressable onPress={onPressed}>
+    <Pressable onPress={onCardPressed}>
       {({ isPressed }) => (
         <Box
           bg={isPressed ? "primary.600" : "primary.500"}
