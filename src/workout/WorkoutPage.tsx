@@ -10,6 +10,7 @@ import {
   Icon,
   Stack,
   Button,
+  Image,
 } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect } from "react";
@@ -28,11 +29,14 @@ interface Props
   extends NativeStackScreenProps<WorkoutStackParamsList, "workout-start"> {}
 
 export function ExerciseVideo() {
-  return (
-    <Box alignItems="center" bg="secondary.400" py="40" my="5" mx="10">
-      <Text color="primary.900">vid/gif</Text>
-    </Box>
-  );
+  return <Center>
+      <Image
+      source={require("../image/workoutPlank.gif")}
+      size={350}
+      my="5" 
+      mx="10"
+      />
+  </Center>
 }
 
 export function ExerciseStopwatch() {
