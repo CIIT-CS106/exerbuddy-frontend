@@ -6,12 +6,12 @@ import {
 import React from "react";
 import App, { WorkoutStackParamsList } from "@app/App";
 import { useNavigation } from "@react-navigation/native";
-type WorkoutPageNavigationProp = NativeStackNavigationProp<
+import { useAppDispatch } from "../app/hooks";
+import { resetTimer } from "../workout/workoutTimerSlice";
+type WorkoutStackNavigationProps = NativeStackNavigationProp<
   WorkoutStackParamsList,
-  "exercise-menu"
+  "workout-details"
 >;
-interface Props
-  extends NativeStackScreenProps<WorkoutStackParamsList, "exercise-menu"> {}
 
 export function ExerciseTitle() {
   return (
@@ -39,10 +39,14 @@ export function ExerciseStats() {
 }
 
 export function ExerciseList() {
-  const navigation = useNavigation<WorkoutPageNavigationProp>();
+  const navigation = useNavigation<WorkoutStackNavigationProps>();
+
   const onButtonPressed = () => {
-    navigation.navigate("exercise-timer");
+    navigation.navigate("workout-start", {
+      durationMs: 2000,
+    });
   };
+
   return (
     <>
       <Box py="7" px="5">
@@ -70,15 +74,9 @@ export function ExerciseList() {
   );
 }
 
-export function ExerciseMenu() {
+const WorkoutDetailsPage = () => {
   return (
     <Box>
-      <StatusBar
-        animated={true}
-        translucent={true}
-        barStyle={"light-content"}
-        backgroundColor={"#252527"}
-      />
       <Box>
         <ExerciseTitle />
       </Box>
@@ -90,4 +88,6 @@ export function ExerciseMenu() {
       </Box>
     </Box>
   );
-}
+};
+
+export default WorkoutDetailsPage;
