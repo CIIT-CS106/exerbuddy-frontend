@@ -2,7 +2,10 @@ import "react-native-gesture-handler";
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from "@react-navigation/native-stack";
 import { Box, NativeBaseProvider } from "native-base";
 import { registerRootComponent } from "expo";
 import { Provider as ReduxProvider } from "react-redux";
@@ -11,17 +14,18 @@ import { LoginPage } from "../login/LoginPage";
 import { SignUpPage } from "../signup/SignUpPage";
 import { SignUpGender } from "../signup-gender/SignUpGender";
 import HomePage from "../home/HomePage";
-import { WorkoutDifficulty } from "../workout/WorkoutDifficulty";
-import { ExerciseMenu } from "../workout/ExerciseMenu";
-import { ExerciseTimer } from "../workout/ExerciseTimer";
+import { WorkoutDifficultyPage } from "../workout/WorkoutDifficultyPage";
+
 import { store } from "./store";
 import theme from "../theme";
 import {
   BottomTabHeaderProps,
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
-import { WorkoutPage } from "../workout/WorkoutPage";
 import HomeAppBar from "../home/components/HomeAppBar";
+import WorkoutDetailsPage from "../workout-details/WorkoutDetailsPage";
+import WorkoutListPage from "../workout-list/WorkoutListPage";
+import WorkoutPage from "../workout/WorkoutPage";
 
 export type StackParamsList = {
   login: undefined;
@@ -34,11 +38,16 @@ export type HomeTabParamsList = {
   workout: undefined;
 };
 export type WorkoutStackParamsList = {
-  workouts: undefined;
+  "workout-list": undefined;
+  "workout-start": {
+    durationMs: number;
+  };
   "workout-difficulty": undefined;
-  "exercise-menu": undefined;
-  "exercise-timer": undefined;
+  "workout-details": undefined;
 };
+
+export type WorkoutStackNavigationProps =
+  NativeStackNavigationProp<WorkoutStackParamsList>;
 
 const Tabs = createBottomTabNavigator<HomeTabParamsList>();
 
@@ -74,23 +83,25 @@ const HomeTabs = () => {
 };
 
 const Stack = createNativeStackNavigator<WorkoutStackParamsList>();
+
 const WorkoutStack = () => {
   const { colors } = theme;
   return (
-    <Stack.Navigator initialRouteName={"workouts"}>
-      <Stack.Screen name="workouts" 
-      component={WorkoutPage} 
-      options={{
-        title: "WORKOUT",
-        headerStyle: {
-          backgroundColor: colors.secondary["800"],
-        },
-        headerTintColor: colors.secondary["50"],
-      }}
+    <Stack.Navigator initialRouteName={"workout-list"}>
+      <Stack.Screen
+        name="workout-list"
+        component={WorkoutListPage}
+        options={{
+          title: "WORKOUT",
+          headerStyle: {
+            backgroundColor: colors.secondary["800"],
+          },
+          headerTintColor: colors.secondary["50"],
+        }}
       />
       <Stack.Screen
         name="workout-difficulty"
-        component={WorkoutDifficulty}
+        component={WorkoutDifficultyPage}
         options={{
           title: "WORKOUT",
           headerStyle: {
@@ -100,8 +111,8 @@ const WorkoutStack = () => {
         }}
       />
       <Stack.Screen
-        name="exercise-menu"
-        component={ExerciseMenu}
+        name="workout-details"
+        component={WorkoutDetailsPage}
         options={{
           title: "WORKOUT",
           headerStyle: {
@@ -111,8 +122,8 @@ const WorkoutStack = () => {
         }}
       />
       <Stack.Screen
-        name="exercise-timer"
-        component={ExerciseTimer}
+        name="workout-start"
+        component={WorkoutPage}
         options={{
           title: "WORKOUT",
           headerStyle: {
