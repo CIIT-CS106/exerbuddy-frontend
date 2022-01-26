@@ -1,6 +1,7 @@
 import { BottomTabHeaderProps } from "@react-navigation/bottom-tabs";
 import { HStack, StatusBar, Text } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
 
 const HomeAppBar = (props: BottomTabHeaderProps) => {
   const { options } = props;
