@@ -1,16 +1,17 @@
+import { Box, StatusBar, Text, Button } from "native-base";
 import {
-  Box,
-  StatusBar,
-  Text,
-  Button,
-} from "native-base";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+  NativeStackScreenProps,
+  NativeStackNavigationProp,
+} from "@react-navigation/native-stack";
 import React from "react";
-import App, { StackParamsList } from "@app/App";
-
-
+import App, { WorkoutStackParamsList } from "@app/App";
+import { useNavigation } from "@react-navigation/native";
+type WorkoutPageNavigationProp = NativeStackNavigationProp<
+  WorkoutStackParamsList,
+  "exercise-menu"
+>;
 interface Props
-  extends NativeStackScreenProps<StackParamsList, "exercise-menu"> {}
+  extends NativeStackScreenProps<WorkoutStackParamsList, "exercise-menu"> {}
 
 export function ExerciseTitle() {
   return (
@@ -38,6 +39,10 @@ export function ExerciseStats() {
 }
 
 export function ExerciseList() {
+  const navigation = useNavigation<WorkoutPageNavigationProp>();
+  const onButtonPressed = () => {
+    navigation.navigate("exercise-timer");
+  };
   return (
     <>
       <Box py="7" px="5">
@@ -52,6 +57,7 @@ export function ExerciseList() {
         </Text>
       </Box>
       <Button
+        onPress={onButtonPressed}
         borderRadius="full"
         alignSelf="center"
         mb="5"

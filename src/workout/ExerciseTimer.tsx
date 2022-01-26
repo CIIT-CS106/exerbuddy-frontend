@@ -13,10 +13,10 @@ import {
 } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import App, { StackParamsList } from "@app/App";
+import App, { WorkoutStackParamsList } from "@app/App";
 
 interface Props
-  extends NativeStackScreenProps<StackParamsList, "exercise-timer"> {}
+  extends NativeStackScreenProps<WorkoutStackParamsList, "exercise-timer"> {}
 
 export function ExerciseVideo() {
   return (
