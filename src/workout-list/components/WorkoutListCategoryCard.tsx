@@ -5,26 +5,19 @@ import {
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Box, Center, Image, Pressable, Text } from "native-base";
-type WorkoutPageNavigationProp = NativeStackNavigationProp<
-  WorkoutStackParamsList,
-  "workouts"
->;
+import { Box, Button, Center, Image, Pressable, Text } from "native-base";
+import { useIsPressed } from "native-base/lib/typescript/components/primitives/Pressable/Pressable";
 interface IProps {
   title: string;
   imageUrl?: string;
   onPressed?: () => void;
 }
 
-const WorkoutCategoryCard = (props: IProps) => {
-  const navigation = useNavigation<WorkoutPageNavigationProp>();
-  const onCardPressed = () => {
-    navigation.navigate("workout-difficulty");
-  };
+const WorkoutListCategoryCard = (props: IProps) => {
   const { title, imageUrl, onPressed } = props;
 
   return (
-    <Pressable onPress={onCardPressed}>
+    <Pressable onPress={onPressed}>
       {({ isPressed }) => (
         <Box
           bg={isPressed ? "primary.600" : "primary.500"}
@@ -52,4 +45,4 @@ const WorkoutCategoryCard = (props: IProps) => {
   );
 };
 
-export default WorkoutCategoryCard;
+export default WorkoutListCategoryCard;

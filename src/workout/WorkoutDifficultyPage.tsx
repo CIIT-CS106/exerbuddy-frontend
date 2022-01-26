@@ -37,7 +37,7 @@ interface Props
 export function WorkoutDifficultyForm() {
   const navigation = useNavigation<WorkoutPageNavigationProp>();
   const onButtonPressed = () => {
-    navigation.navigate("exercise-menu");
+    navigation.navigate("workout-details");
   };
   return (
     <FormControl paddingX="8">
@@ -49,7 +49,13 @@ export function WorkoutDifficultyForm() {
           </Text>
         </VStack>
         <Stack>
-          <Button onPress={onButtonPressed} borderRadius="20" alignSelf="center" mb="5" width="60%">
+          <Button
+            onPress={onButtonPressed}
+            borderRadius="20"
+            alignSelf="center"
+            mb="5"
+            width="60%"
+          >
             BEGINNER
           </Button>
         </Stack>
@@ -70,16 +76,10 @@ export function WorkoutDifficultyForm() {
   );
 }
 
-export function WorkoutDifficulty() {
+export function WorkoutDifficultyPage() {
   const { colors } = theme;
   return (
     <Box bg={colors.secondary["50"]} height="100%" width="100%" safeArea>
-      <StatusBar
-        animated={true}
-        translucent={true}
-        barStyle={"light-content"}
-        backgroundColor={"#252527"}
-      />
       <Box alignItems="center">
         <Box width="100%">
           <WorkoutDifficultyForm />

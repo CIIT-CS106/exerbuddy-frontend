@@ -1,62 +1,98 @@
 import {
-  HStack,
-  Stack,
-  Center,
-  Heading,
-  NativeBaseProvider,
   Box,
-  AspectRatio,
-  Image,
-  Text,
+  Center,
   StatusBar,
+  Text,
+  Pressable,
+  HStack,
   VStack,
+  Divider,
+  Icon,
+  Stack,
+  Button,
 } from "native-base";
-import { color } from "native-base/lib/typescript/theme/styled-system";
-import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { HomeTabParamsList, StackParamsList,WorkoutStackParamsList } from "@app/App";
+import React, { useEffect } from "react";
+import App, { WorkoutStackParamsList } from "@app/App";
+import { WorkoutTimer } from "./components/WorkoutTimer";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
-  BaseRouter,
-  NavigationHelpersContext,
-  TabRouter,
-  useNavigation,
-} from "@react-navigation/native";
-import WorkoutCategoryCard from "./components/WorkoutCategoryCard";
-import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+  pauseTimer,
+  resetTimer,
+  selectWorkoutTimer,
+  startTimer,
+  stopTimer,
+} from "./workoutTimerSlice";
 
-interface Props extends NativeStackScreenProps<WorkoutStackParamsList, "workouts"> {}
+interface Props
+  extends NativeStackScreenProps<WorkoutStackParamsList, "workout-start"> {}
 
-// export type WorkoutStackParamsList = {
-//   workoutDifficulty: undefined;
-//   workoutTimer: undefined;
-//   workoutExercise: undefined;
-// };
-
-export function WorkoutForm() {
+export function ExerciseVideo() {
   return (
-    <Stack
-      alignItems="center"
-      justifyContent="center"
-      w="full"
-      direction="column"
-      space="4"
-    >
-      <HStack space={"4"}>
-        <WorkoutCategoryCard title="Endurance" />
-        <WorkoutCategoryCard title="Strength" />
-      </HStack>
-      <HStack space="4">
-        <WorkoutCategoryCard title="Balance" />
-        <WorkoutCategoryCard title="Flexibility" />
-      </HStack>
-    </Stack>
+    <Box alignItems="center" bg="secondary.400" py="40" my="5" mx="10">
+      <Text color="primary.900">vid/gif</Text>
+    </Box>
   );
 }
 
-export function WorkoutPage() {
+export function ExerciseStopwatch() {
+  const workoutTimerState = useAppSelector(selectWorkoutTimer);
+  const dispatch = useAppDispatch();
+
+  const onStartPressed = () => {
+    if (workoutTimerState.isRunning) {
+      dispatch(stopTimer());
+      return;
+    }
+    dispatch(startTimer());
+  };
+
   return (
-    <VStack alignItems="center" justifyContent="center" h="full" w="full">
-      <WorkoutForm />
-    </VStack>
+    <>
+      <WorkoutTimer />
+      <Button
+        onPress={onStartPressed}
+        alignSelf="center"
+        borderRadius="full"
+        width="60%"
+        _text={{ fontSize: "xl" }}
+      >
+        {workoutTimerState.isRunning ? "Pause" : "Start"}
+      </Button>
+    </>
   );
 }
+
+export function WorkoutPage({ navigation, route }: Props) {
+  const dispatch = useAppDispatch();
+  const { durationMs } = route.params;
+
+  useEffect(() => {
+    navigation.addListener("beforeRemove", (e) => {
+      dispatch(stopTimer());
+    });
+  }, [navigation, dispatch]);
+
+  useEffect(() => {
+    dispatch(resetTimer(durationMs));
+  }, [dispatch]);
+
+  return (
+    <Box height="100%" width={"100%"}>
+      <StatusBar
+        animated={true}
+        translucent={true}
+        barStyle={"light-content"}
+        backgroundColor={"#252527"}
+      />
+      <Box>
+        <ExerciseVideo />
+      </Box>
+      <Box>
+        <ExerciseStopwatch />
+      </Box>
+    </Box>
+  );
+}
+
+export default WorkoutPage;
