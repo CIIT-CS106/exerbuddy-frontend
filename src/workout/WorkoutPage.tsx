@@ -32,6 +32,7 @@ export function ExerciseVideo() {
   return <Center>
       <Image
       source={require("../image/workoutPlank.gif")}
+      alt="Alternate Text"
       size={350}
       my="5" 
       mx="10"
