@@ -21,14 +21,15 @@ export function WorkoutForm() {
     >
       <HStack space={"4"}>
         <WorkoutListCategoryCard
+          imageUrl="https://i.ibb.co/3rgTXds/endurance-Icon.png"
           title="Endurance"
           onPressed={onEndurancePressed}
         />
-        <WorkoutListCategoryCard title="Strength" />
+        <WorkoutListCategoryCard title="Strength" imageUrl="https://i.ibb.co/28FHGjr/strength-Icon.png" />
       </HStack>
       <HStack space="4">
-        <WorkoutListCategoryCard title="Balance" />
-        <WorkoutListCategoryCard title="Flexibility" />
+        <WorkoutListCategoryCard title="Balance" imageUrl="https://i.ibb.co/Ryrh3nx/balance-Icon.png"/>
+        <WorkoutListCategoryCard title="Flexibility" imageUrl="https://i.ibb.co/5BLK9wJ/flexibility-Icon.png"/>
       </HStack>
     </Stack>
   );

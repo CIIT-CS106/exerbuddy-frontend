@@ -33,10 +33,10 @@ const WorkoutListCategoryCard = (props: IProps) => {
             </Text>
             <Image
               source={{
-                uri: "https://wallpaperaccess.com/full/317501.jpg",
+                uri: imageUrl
               }}
               alt="Alternate Text"
-              size="lg"
+              size="xl"
             />
           </Center>
         </Box>

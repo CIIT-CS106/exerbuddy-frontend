@@ -44,6 +44,12 @@ const HomePage = ({ navigation }: Props) => {
     "20 Reps of Sit-Ups",
   ];
 
+  const linkList=[
+    "https://media2.giphy.com/media/7VBxeliXOHQE2Erp1Z/giphy.gif",
+    "https://media1.giphy.com/media/KhIrxXZbeKG8R4yNNz/giphy.gif",
+    "https://media2.giphy.com/media/vwbNHCddHpc7SEWvme/giphy.gif",
+  ];
+
   const renderExerciseCards = () => {
     return exerciseList.map((exercise, i) => (
       <HomeExerciseCard title={exercise} key={i} />
@@ -58,7 +64,19 @@ const HomePage = ({ navigation }: Props) => {
         </Box>
         <Box mx="5">
           <QuickExercises />
-          {renderExerciseCards()}
+          <HomeExerciseCard 
+          title="1-min Jump and Jacks" 
+          imageUrl="https://media2.giphy.com/media/HKTtspvYD8reGjtk6X/giphy.gif"
+          />
+          <HomeExerciseCard 
+          title="10 Reps of Push-Ups" 
+          imageUrl="https://media1.giphy.com/media/kMJeCB6mShwO8kCE49/giphy.gif"
+          />
+          <HomeExerciseCard 
+          title="20 Reps of Sit-Ups" 
+          imageUrl="https://media0.giphy.com/media/AeAJE2zHgnup7DyDxL/giphy.gif?"
+          />
+          
         </Box>
       </ScrollView>
     </Box>

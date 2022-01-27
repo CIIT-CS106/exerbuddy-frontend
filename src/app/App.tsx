@@ -26,6 +26,7 @@ import HomeAppBar from "../home/components/HomeAppBar";
 import WorkoutDetailsPage from "../workout-details/WorkoutDetailsPage";
 import WorkoutListPage from "../workout-list/WorkoutListPage";
 import WorkoutPage from "../workout/WorkoutPage";
+import {Ionicons} from "@expo/vector-icons"
 
 export type StackParamsList = {
   login: undefined;
@@ -68,13 +69,14 @@ const HomeTabs = () => {
         component={HomePage}
         options={{
           title: "Home",
-          tabBarIcon: () => <Box bg="red.100" h="full" />,
+          tabBarIcon: (props) => <Ionicons name="man" size={props.size} color={props.color}/>,
         }}
       />
       <Tabs.Screen
         name="workout"
         component={WorkoutStack}
         options={{
+          tabBarIcon: (props) => <Ionicons name="home" size={props.size} color={props.color}/>,
           headerShown: false,
         }}
       />
